@@ -26,12 +26,20 @@ cd docker-http-mqtt-bridge
 ```
 2. change http-mqtt-bridge.env mqtt server properties to your own
 ```text
-AUTH_KEY=''
-MQTT_HOST=''
-MQTT_USER=''
-MQTT_PASS=''
-MQTT_CLIENT_ID='http-to-mqtt'
-PORT=5000
+AUTH_KEY=
+MQTT_HOST=
+MQTT_USER=
+MQTT_PASS=
+MQTT_CLIENT_ID=http-to-mqtt-center
+```
+here is example
+```text
+#such as
+#AUTH_KEY=123456
+#MQTT_HOST=mqtt://192.168.1.112
+#MQTT_USER=myMqttUser
+#MQTT_PASS=myMqttPassword
+#MQTT_CLIENT_ID='http-to-mqtt
 ```
 3. change docker-compose.yml github user account to your own
 ```text
