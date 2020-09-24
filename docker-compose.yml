@@ -4,8 +4,8 @@ services:
     build:
       context: ./
       args:
-        - githubUsername: <YourGithubUserNameForCloneInContainer>
-        - githubPassword: <YourGithubPasswordForCloneInContainer>
+        - githubUsername=<YourGithubUserNameForClone>
+        - githubPassword=<YourGithubPasswordForClone>
       dockerfile: Dockerfile
     env_file:
       - http-mqtt-bridge.env
