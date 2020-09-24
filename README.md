@@ -40,8 +40,8 @@ services:
     build:
       context: ./
       args:
-        - githubUsername: <YourGithubUserNameForCloneInContainer>
-        - githubPassword: <YourGithubPasswordForCloneInContainer>
+        - githubUsername: <YourGithubUserName>
+        - githubPassword: <YourGithubPassword>
 ```
 3. start build and deploy
 ```shell script
@@ -55,6 +55,14 @@ Setup and run the docker image ;-) .
 Now lets publish a message to the topic 'MyTopic'
 ```bash
 curl -H "Content-Type: application/json" "http://<HostnameOfYourDockerHost>:5000/post"  -d '{"topic" : "MyTopic", "message" : "Hello World" }'
+```
+or in request query parameters
+```bash
+curl -X POST "http://<HostnameOfYourDockerHost>:5000/publish_by_uri?topic=MyTopic&message=Hello World"
+```
+if you fill AUTH_KEY in step2.2
+```bash
+curl -X POST "http://<HostnameOfYourDockerHost>:5000/publish_by_uri?key=<YourAuthKey>&topic=MyTopic&message=Hello World"
 ```
 
 output:
