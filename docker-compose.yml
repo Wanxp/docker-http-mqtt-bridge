@@ -1,8 +1,17 @@
 version: '2'
 services:
   app:
-    image: migoller/http-mqtt-bridge
+    build:
+      context: ./
+      args:
+        - githubUsername: <YourGithubUserNameForCloneInContainer>
+        - githubPassword: <YourGithubPasswordForCloneInContainer>
+      dockerfile: Dockerfile
     env_file:
       - http-mqtt-bridge.env
     ports:
       - "5000:5000"
+    container_name: http-to-mqtt
+    restart: unless-stopped
+    image: http-to-mqtt-image
+

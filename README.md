@@ -18,16 +18,36 @@ Well, the image does not contain a local MQTT broker. Set the following environm
 * MQTT_PASS: Set to your password accordingly to your username for authentication.
 
 Please have a look at [petkov's HTTP to MQTT bridge](https://github.com/petkov/http_to_mqtt) for more details!
+### way 2: build local
+1. clone this repository to your server
+```shell script
+git clone https://github.com/Wanxp/docker-http-mqtt-bridge.git
+cd docker-http-mqtt-bridge
+```
+2. change http-mqtt-bridge.env mqtt server properties to your own
+```text
+AUTH_KEY=''
+MQTT_HOST=''
+MQTT_USER=''
+MQTT_PASS=''
+MQTT_CLIENT_ID='http-to-mqtt'
+PORT=5000
+```
+3. change docker-compose.yml github user account to your own
+```text
+services:
+  app:
+    build:
+      context: ./
+      args:
+        - githubUsername: <YourGithubUserNameForCloneInContainer>
+        - githubPassword: <YourGithubPasswordForCloneInContainer>
+```
+3. start build and deploy
+```shell script
+docker-compose up -d --build
+```
 
-```
-docker run -d \
-    -p 5000:5000 \
-    -e AUTH_KEY=912ec803b2ce49e4a541068d495ab570 \
-    -e MQTT_HOST=mqtts://k99.cloudmqtt.com:21234 \
-    -e MQTT_USER=<YourUsernameHere> \
-    -e MQTT_PASS=<YourPasswordHere> \
-    migoller/http-mqtt-bridge
-```
 
 ## Publish to a topic
 Setup and run the docker image ;-) .

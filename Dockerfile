@@ -7,15 +7,16 @@ FROM node:8-alpine AS build
 RUN mkdir -p /build
 
 WORKDIR /build
-
+ARG githubUsername
+ARG githubPassword
 # Install package dependencies
 RUN apk add --update --no-cache python pkgconfig make g++ git
 
 # Clone the source repo
 RUN mkdir master_temp
-RUN git clone https://github.com/petkov/http_to_mqtt.git master_temp
-RUN cp -R -f master_temp/* .
-RUN rm -rf master_temp
+RUN git clone https://${githubUsername}:${githubPassword}@github.com/Wanxp/http_to_mqtt.git master_temp_2
+RUN cp -R -f master_temp_2/* .
+RUN rm -rf master_temp_2
 
 # Install app
 RUN npm install
@@ -28,7 +29,6 @@ FROM node:8-alpine AS runtime
 LABEL Author="MiGoller"
 
 # Set environment variables to default values
-ENV AUTH_KEY=SetToSomethingVerySpecial
 
 COPY --from=build /build /app
 
