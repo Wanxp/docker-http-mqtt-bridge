@@ -40,8 +40,8 @@ services:
     build:
       context: ./
       args:
-        - githubUsername: <YourGithubUserName>
-        - githubPassword: <YourGithubPassword>
+        - githubUsername=<YourGithubUserNameForClone>
+        - githubPassword=<YourGithubPasswordForClone>
 ```
 3. start build and deploy
 ```shell script
