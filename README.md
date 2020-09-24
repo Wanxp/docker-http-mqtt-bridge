@@ -60,7 +60,7 @@ or in request query parameters
 ```bash
 curl -X POST "http://<HostnameOfYourDockerHost>:5000/publish_by_uri?topic=MyTopic&message=Hello World"
 ```
-if you fill AUTH_KEY in step2.2
+if you fill AUTH_KEY in step2.2, you should add property 'key' in your request body or request query parameters
 ```bash
 curl -X POST "http://<HostnameOfYourDockerHost>:5000/publish_by_uri?key=<YourAuthKey>&topic=MyTopic&message=Hello World"
 ```
